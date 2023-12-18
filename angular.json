@@ -60,10 +60,10 @@
           "builder": "@angular-devkit/build-angular:dev-server",
           "configurations": {
             "production": {
-              "browserTarget": "poslasticarnica_web:build:production"
+              "buildTarget": "poslasticarnica_web:build:production"
             },
             "development": {
-              "browserTarget": "poslasticarnica_web:build:development"
+              "buildTarget": "poslasticarnica_web:build:development"
             }
           },
           "defaultConfiguration": "development"
@@ -71,7 +71,7 @@
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "poslasticarnica_web:build"
+            "buildTarget": "poslasticarnica_web:build"
           }
         },
         "test": {
