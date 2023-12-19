@@ -1,14 +1,14 @@
 <div id="_bg__login_">
     <img src="../assets/img/LOGIN.jpg" id="rectangle_1">
     <div id="rectangle_2">
-        <mat-form-field class="example-full-width">
-            <mat-label>Favorite food</mat-label>
-            <input matInput placeholder="Ex. Pizza" value="Sushi">
-          </mat-form-field>
+        <div id="first">Dobrodošli!</div> <br>
+        <div id="second">Prijavite se kako biste nastavili.</div> <br><br>
+        <label for="username" id="l1">Korisničko ime</label> <br>
+        <input type="text" f placeholder="Unesite korisničko ime" id="username" name="username" [(ngModel)]="username"> <br> <br> <br>
         
-          <mat-form-field class="example-full-width">
-            <mat-label>Leave a comment</mat-label>
-            <textarea matInput placeholder="Ex. It makes me feel..."></textarea>
-          </mat-form-field>
+        <label for="password" id="l2">Lozinka</label><br>
+        <input type="password" placeholder="Unesite lozinku" id="password" name="password" [(ngModel)]="password"> <br><br><br>
+        <p style="color: rgb(255, 19, 58);"><b>{{error}}</b></p>
+        <button id="sign" (click)="signIn()">Prijava na sistem</button>
     </div>
 </div>

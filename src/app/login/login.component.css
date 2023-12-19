@@ -12,7 +12,63 @@
     background-color: rgba(156, 205, 212, 1);
     width: 500px;
     border-radius: 50px;
-height: 520px;
+height: 550px;
 margin: 0 auto;
 margin-top: 0;
+text-align: center;
 }
+
+#first{
+    color: #FFF;
+
+text-align: center;
+font-family: Roboto;
+font-size: 33px;
+font-style: normal;
+font-weight: 700;
+line-height: normal;
+}
+#second{
+    color: #FFF;
+font-family: Roboto;
+font-size: 37px;
+font-style: normal;
+font-weight: 400;
+line-height: normal;
+}
+
+#username
+{
+    width: 300px;
+    height: 48px;
+     border: none;
+    border-radius: 5px;
+    }
+
+ #password
+ {
+        width: 300px;
+        height: 48px;
+         border: none;
+         border-radius: 5px;
+        }
+
+#l1, #l2{
+margin-bottom: 3px;
+color: #FFF;
+}
+
+#l1{margin-left: -205px;}
+#l2{
+    margin-left: -249px;
+}
+
+#sign{
+    background:rgba(3.5,105.49,120.06,1);
+    border-radius: 5px;
+	border: 1px solid #046978;
+	width: 142px;
+	height: 48px;
+    color: white;
+}
+

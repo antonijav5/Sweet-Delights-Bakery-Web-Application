@@ -12,6 +12,10 @@ import { MojiPodaciComponent } from './moji-podaci/moji-podaci.component';
 import { ObavestenjaComponent } from './obavestenja/obavestenja.component';
 import {MatInputModule} from '@angular/material/input';
 import { FormsModule } from '@angular/forms';
+import {ErrorStateMatcher} from '@angular/material/core';
+import {MatFormFieldModule} from '@angular/material/form-field';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -26,8 +30,10 @@ import { FormsModule } from '@angular/forms';
   imports: [
     BrowserModule,
     AppRoutingModule,
-    MatInputModule,
-    FormsModule
+    FormsModule,
+    NgbModule,
+
+    
   ],
   providers: [],
   bootstrap: [AppComponent]
