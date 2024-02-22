@@ -11,26 +11,76 @@
                 <li class="nav-item active">
                     <span class="nav-link" style="font-size: 48px; color: #046978;">Šećerlema</span>
                 </li>
-                <li class="nav-item">
+                <li class="nav-item" *ngIf="type=='customer'">
                   <u><a class="nav-link" href="promocije" style="margin-left: 230px;">PROMOCIJE</a></u>
                 </li>
-                <li class="nav-item">
+                <li class="nav-item" *ngIf="type=='customer'">
                <a class="nav-link" href="poslastice">POSLASTICE</a>
                   </li>
-                  <li class="nav-item">
+                  <li class="nav-item" *ngIf="type=='customer'">
                     <a class="nav-link" href="o-nama">O NAMA</a>
                   </li>
-                  <li class="nav-item">
+                  <li class="nav-item" *ngIf="type=='customer'">
                     <a class="nav-link" href="moji-podaci">MOJI PODACI</a>
                   </li>
-                  <li class="nav-item">
+                  <li class="nav-item" *ngIf="type=='customer'">
                     <a class="nav-link" href="moja-korpa">MOJA KORPA</a>
                   </li>
+                  <li class="nav-item" *ngIf="type=='customer'">
+                    <a class="nav-link" href="obavestenja" id="bell"> <i class="far fa-bell"></i></a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link" href="#" id="signout">  <i class="fas fa-sign-out-alt"></i></a>  
+                  </li>
+                 
               </ul>
         </div>
     </nav>
     <br>
     <br>
     <h1 class="naslov">PROMOCIJE</h1>
-<div id="blue"></div>
+<div id="blue">
+  <h1 style="margin-left: 100px; color: white;">{{headlines[cnt%texts.length]}}</h1><br><br>
+  <table style="position: relative; 
+ top: -90px" >
+<tr>
+  <td>
+    <table [ngStyle]="checkLeft()">
+      <tr>
+        <td>
+          <img src="{{imgs1[cnt%texts.length]}}" [ngStyle]="getStyle(1)" id="firstpic"> <br>
+          <h4 style="text-align: center; color: white;">{{items1[cnt%texts.length]}}</h4>
+        </td>
+        <td>
+          <img src="../assets/img/proms/plus.png">
+        </td>
+        <td>
+          <img src="{{imgs2[cnt%texts.length]}}" [ngStyle]="getStyle(2)" id="secondpic"><br>
+          <h4 style="text-align: center; color: white;">{{items2[cnt%texts.length]}}</h4>
+        </td>
+      </tr>
+      <tr *ngIf="cnt%3==2">
+        <td colspan="3" style="text-align: center; position: relative; top: -100px">
+          <img src="{{img3}}" style="height: 250px; width: 250px;" id="thirdpic"><br>
+          <h4 style="text-align: center; color: white;">{{item3}}</h4>
+        </td>
+      </tr>
+
+      
+        </table>
+  </td>
+  <td style="width: 15%;"></td>
+  <td style="width: 3%;" *ngIf="cnt%3==2"></td>
+  <td style="color: white; font-weight: bold; font-size: 36px; text-align: center; max-width:500px; float: inline-end;">{{followuptext}}</td>
+</tr>
+  </table>
+ 
+  <div>
+ 
+  
+
+</div>
+
+
+</div>
 </div>

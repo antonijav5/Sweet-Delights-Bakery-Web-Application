@@ -11,20 +11,26 @@
                 <li class="nav-item active">
                     <span class="nav-link" style="font-size: 48px; color: #046978;">Šećerlema</span>
                 </li>
-                <li class="nav-item">
+                <li class="nav-item" *ngIf="type=='customer'">
                   <a class="nav-link" href="promocije" style="margin-left: 230px;">PROMOCIJE</a>
                 </li>
-                <li class="nav-item">
+                <li class="nav-item" *ngIf="type=='customer'">
                     <a class="nav-link" href="poslastice">POSLASTICE</a>
                   </li>
-                  <li class="nav-item">
+                  <li class="nav-item" *ngIf="type=='customer'">
                     <a class="nav-link" href="o-nama">O NAMA</a>
                   </li>
-                  <li class="nav-item">
+                  <li class="nav-item" *ngIf="type=='customer'">
                     <a class="nav-link" href="moji-podaci">MOJI PODACI</a>
                   </li>
-                  <li class="nav-item">
+                  <li class="nav-item" *ngIf="type=='customer'">
                     <a class="nav-link" href="moja-korpa">MOJA KORPA</a>
+                  </li>
+                  <li class="nav-item" *ngIf="type=='customer'">
+                    <a class="nav-link" href="obavestenja" id="bell"> <i class="far fa-bell"></i></a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link" href="#" id="signout">  <i class="fas fa-sign-out-alt"></i></a>  
                   </li>
               </ul>
         </div>
@@ -32,5 +38,44 @@
     <br>
     <br>
     <h1 class="naslov">MOJA OBAVEŠTENJA</h1>
-<div id="blue"></div>
+<div id="blue">
+ <div class="container">
+  <div class="row justify-content-center">
+    <div class="col-lg-7 col-md-8 col-sm-12">
+      <div class="obavestenje" *ngFor="let order of moje_narudzbine">
+      <span *ngIf="order.status=='Odobrena'">
+        <button class="xbutton" (click)=removeOrder(order.idOrder)>X</button>
+   
+        <div style="color: black !important;">
+          <img src="../assets/img/check.png" alt="" class="imgStatus">
+        Vaša narudžbina (<span *ngFor="let proizvod of order.items; let i=index">{{proizvod.quantity}} x {{getNaslovFormat(proizvod.name)}}<span *ngIf="i<order.items.length-1">,&nbsp;</span></span> ) je odoborena. 
+        Prijatno!
+         
+        </div>
+      
+      </span>
+        <span *ngIf="order.status=='Odbijena'">
+          <button class="xbutton" (click)=removeOrder(order.idOrder)>X</button>
+
+          <div style="color: black !important;">
+            <img src="../assets/img/close.png" alt="" class="imgStatus">
+          Vaša narudžbina (<span *ngFor="let proizvod of order.items; let i=index">{{proizvod.quantity}} x {{getNaslovFormat(proizvod.name)}}<span *ngIf="i<order.items.length-1">,&nbsp;</span></span> ) je odbijena. 
+          Probajte da naručite kasnije.
+
+        </div>
+        
+        </span>
+      </div>
+  </div>
+
+
+  </div>
+  <div class="row justify-content-center">
+    <div class="col-lg-7 col-md-8 col-sm-12">
+  <div *ngIf="moje_narudzbine.length==0"  class="obavestenje nemaobavestenje" >Trenutno nemate obaveštenja.</div>
+  </div>
+  </div>
+ </div>
+
+</div>
 </div>

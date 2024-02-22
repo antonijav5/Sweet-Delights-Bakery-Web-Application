@@ -1,8 +1,8 @@
 #blue {
-    margin-top: 122px;
+    margin-top: 100px;
 	left: 0px;
 	width: 100%;
-	height: 600px;
+	height: 560px;
 	-ms-border-radius: 50px;
 	-o-border-radius: 50px;
 	-moz-border-radius: 50px;
@@ -11,7 +11,6 @@
 	background:rgba(156,205,212,1);
 
 }
-
 .naslov {
     color: #046978;
 
@@ -31,11 +30,20 @@ height: 167px;
 
 a,p,div{
     font-family: Segoe Print;
+    color: #046978 !important;
 }
+#a.bell {
+    font-family: inherit; 
+    
+}
+#a.signout {
+    font-family: inherit; 
+}
+
 
 a{
     font-size: 25px;
-    margin-left: 45px;
+    margin-left: 40px;
     margin-top: 27px;
     color: #046978;
 }
@@ -43,3 +51,55 @@ a{
 #linkovi{
     margin-left: 45px;
 }
+
+#plus{
+    background-color: white; color: #023840; font-size: 20px; border: none; border-radius: 10px; margin-right: 10px !important;
+}
+
+
+#minus{
+    background-color: white; color: #023840; font-size: 20px; border: none; border-radius: 10px; margin-right: 10px !important; margin-top: 5px;
+}
+
+.item{
+    border: 1px solid #046978; width: 400px; background: linear-gradient(180deg, #FFF 0%, rgba(217, 217, 217, 0.00) 100%);
+}
+
+#potvrdi {
+    margin-top: 30px;
+    border-radius: 13px;
+    border: 1px solid #046978;
+    font-size: 15px;
+    padding: 20px;
+    background: #046978;
+    font-family: 'Inter';
+}
+
+
+.dialog {
+    display: none;
+    position: fixed;
+    top: 0%; /* Adjust the top value to position the dialog */
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: white;
+    border: 1px solid black;
+    padding-left: 10px;
+    padding-right: 10px;
+  }
+  
+  
+  /* Styles for the dialog content */
+  .dialog-content {
+    text-align: center;
+  }
+
+  .overlay {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+  }

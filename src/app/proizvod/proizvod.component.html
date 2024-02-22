@@ -1,0 +1,103 @@
+
+<div id="main">
+    <nav class="navbar navbar-expand-lg navbar-light">
+      <img src="../assets/img/LOGIN.jpg"  id="img" alt="">
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+      
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav mr-auto">
+                <li class="nav-item active">
+                    <span class="nav-link" style="font-size: 48px; color: #046978;">Šećerlema</span>
+                </li>
+                <li class="nav-item" *ngIf="type=='customer'">
+                  <a class="nav-link" href="promocije" style="margin-left: 230px;">PROMOCIJE</a>
+                </li>
+                <li class="nav-item" *ngIf="type=='customer'">
+                    <u><a class="nav-link" href="poslastice">POSLASTICE</a></u>
+                  </li>
+                  <li class="nav-item" *ngIf="type=='customer'">
+                    <a class="nav-link" href="o-nama">O NAMA</a>
+                  </li>
+                  <li class="nav-item" *ngIf="type=='customer'">
+                    <a class="nav-link" href="moji-podaci">MOJI PODACI</a>
+                  </li>
+                  <li class="nav-item" *ngIf="type=='customer'">
+                    <a class="nav-link" href="moja-korpa">MOJA KORPA</a>
+                  </li>
+
+                  <li class="nav-item" *ngIf="type=='customer'">
+                    <a class="nav-link" href="obavestenja" id="bell"> <i class="far fa-bell"></i></a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link" href="#" id="signout">  <i class="fas fa-sign-out-alt"></i></a>  
+                  </li>
+              </ul>
+        </div>
+    </nav>
+    <br>
+    <br>
+    <h1 class="naslov">{{currentProizvod.naslov}}</h1>
+<div id="blue">
+    <table style="width: 100%;  max-height: 500px; text-align: center;">
+        <tr>
+            <td style="width: 33.33%">
+
+    <div class="opis" >{{currentProizvod.opis}}</div>
+
+    <br>
+    <br>
+   <div style="margin-left: 20px; " id="comsContainer"  > 
+
+    <h5 style="color: white; text-align: left; " *ngIf="currentProizvod.komentari.length>0">Rekli su o ovom proizvodu...</h5>
+    <table style="width: 100%; "class="coms" id="scroll" *ngIf="currentProizvod.komentari.length>0">
+        <tr *ngFor="let comment of currentProizvod.komentari; let i=index" style="width: 100%;">
+           <td style="background-color: white; border: 1px solid black;">
+            <table style="text-align: left !important; " >
+              <tr>
+              <td rowspan="2"><img src="{{getUserPic(comment.id)}}" alt="" class="commentPic"></td>  
+              <td style="width: 635px;">&nbsp;&nbsp;<b>{{getUsername(comment.id)}}</b> <br>
+                &nbsp;&nbsp;{{comment.comment}}
+              </tr>
+        
+          
+           
+            </table>
+        
+
+           </td> 
+        </tr>
+
+    </table>
+    <br>
+  <table>
+  <tr>
+          <td >
+            <input type="text" style="width: 600px;" id="input" placeholder=" Ostavite komentar..." [(ngModel)]="komentar"> 
+          </td>
+        <td><button type="button" class="btn btn-primary" id="buttonSend" (click)="sendComment()">Pošalji</button></td>
+        </tr>
+  </table>
+</div>
+
+            </td>
+            <td style="width: 33.33%">
+            <img src="{{currentProizvod.src}}" style="width: 80%; margin-top: -20px;" alt="">
+            <br><br>
+            <button type="button" class="btn btn-primary" id="buttonKorpa" (click)="addToCart()"><b>Stavi u korpu</b></button>
+            </td>
+            <td style="width: 33.33%; text-align: left; "> 
+             <div id="cena"><b>{{currentProizvod.cena}} DIN</b></div> <br>
+             <br>
+             <div style="color: white;">
+              <div style="font-size: 40px;">Sastav<br></div>
+              <ol style="margin-top: 20px;">
+               <li *ngFor="let sastav of currentProizvod.sastav" style="font-size: 30px;">{{sastav}}</li>
+              </ol>
+             </div>
+       
+            </td>
+        </tr>
+    </table> </div>
+</div>

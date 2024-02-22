@@ -1,0 +1,156 @@
+
+<div id="main">
+    <nav class="navbar navbar-expand-lg navbar-light navbar-inverse">
+      <img src="../assets/img/LOGIN.jpg"  id="img" alt="">
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+      
+        <div class="container-fluid" style="color: #046978 !important;">
+            <ul class="nav navbar-nav">
+                <li class="nav-item active">
+                    <span class="nav-link" style="font-size: 48px; color: #046978;">Šećerlema</span>
+                </li>
+                <li class="nav-item ">
+                    <u><a class="nav-link" href="narudzbine" style="margin-left: 200px;">NARUDŽBINE</a></u>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="dodaj-proizvod">DODAJ PROIZVOD</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="moji-podaci">MOJI PODACI</a>
+                </li>
+            
+            </ul>
+
+            <ul class="nav navbar-nav navbar-right">
+                <li>  <a class="nav-link" href="#" id="signout"><i class="fas fa-sign-out-alt"></i></a>  </li>
+        
+              </ul>
+      
+          
+        </div>
+    </nav>
+    <br>
+    <br>
+    <h1 class="naslov">NARUDŽBINE</h1>
+<div id="blue" class="container-fluid"> 
+<div class="row">
+
+
+    <div class="col-sm-4" style="text-align: center;" *ngIf="narudzbine[cnt*3]" >
+        <div  class="card">
+            <div style="overflow-y: auto; max-height: 300px;" class="itemsCont">
+<div class="proizvodItem" *ngFor="let item of narudzbine[cnt*3].items" >
+<div class="container" >
+    <div class="row">
+        <div class="col" style="margin: auto;"><img src="{{getPic(item.id)}}" alt="" style="width: 75px; height: 75px; object-fit: contain;"></div>
+        <div class="col" style="margin: auto;"><b>{{item.quantity}} x {{getNaslovFormat(item.name)}}</b></div>
+        <div class="col" style="margin: auto;"><b>{{item.fullPrice}} din</b></div>
+    </div>
+</div>
+</div>
+</div>
+<div class="header-sticky">
+    <h4 style="margin-bottom: 30px;"><u><b>UKUPNO: {{getPrice(narudzbine[cnt*3].idOrder)}} din</b></u></h4>
+    <h6 style="margin-bottom: 30px;"><b>STATUS: {{narudzbine[cnt*3].status}}</b></h6>
+    <div class="button-container" style="margin-top: 20px;" *ngIf="narudzbine[cnt*3].status=='Čeka na odobrenje'">
+        <button class="odobriBtn" (click)="approveOrder(narudzbine[cnt*3].idOrder)">Odobri</button>
+        <button class="odbijBtn" (click)="declineOrder(narudzbine[cnt*3].idOrder)">Odbij</button>
+    </div>
+
+    <div class="button-container" style="margin-top: 20px;" *ngIf="narudzbine[cnt*3].status=='Odobrena'">
+        <i class="fa fa-check" aria-hidden="true" style="color:#349A08; font-size: 50px;"></i>
+    </div>
+
+    <div class="button-container" style="margin-top: 20px;" *ngIf="narudzbine[cnt*3].status=='Odbijena'">
+        <i class="fa fa-times" aria-hidden="true" style="color:#CE0000; font-size: 50px;"></i>
+    </div>
+</div>
+<div></div>
+    
+
+
+
+
+
+</div>
+</div>
+
+
+
+<div class="col-sm-4" style="text-align: center;" *ngIf="narudzbine[cnt*3+1]" >
+    <div  class="card" >
+        <div style="overflow-y: auto; max-height: 300px;" class="itemsCont">
+<div class="proizvodItem" *ngFor="let item of narudzbine[cnt*3+1].items" >
+<div class="container" >
+<div class="row">
+    <div class="col" style="margin: auto;"><img src="{{getPic(item.id)}}" alt="" style="width: 75px; height: 75px; object-fit: contain;"></div>
+    <div class="col" style="margin: auto;"><b>{{item.quantity}} x {{getNaslovFormat(item.name)}}</b></div>
+    <div class="col" style="margin: auto;"><b>{{item.fullPrice}} din</b></div>
+</div>
+</div>
+</div>
+        </div>
+<div class="header-sticky">
+    <h4 style="margin-bottom: 30px;"><u><b>UKUPNO: {{getPrice(narudzbine[cnt*3+1].idOrder)}} din</b></u></h4>
+    <h6 style="margin-bottom: 30px;"><b>STATUS: {{narudzbine[cnt*3+1].status}}</b></h6>
+    <div class="button-container" style="margin-top: 20px;" *ngIf="narudzbine[cnt*3+1].status=='Čeka na odobrenje'">
+        <button class="odobriBtn" (click)="approveOrder(narudzbine[cnt*3+1].idOrder)">Odobri</button>
+        <button class="odbijBtn" (click)="declineOrder(narudzbine[cnt*3+1].idOrder)">Odbij</button>
+    </div>
+
+    <div class="button-container" style="margin-top: 20px;" *ngIf="narudzbine[cnt*3+1].status=='Odobrena'">
+        <i class="fa fa-check" aria-hidden="true" style="color:#349A08; font-size: 50px;"></i>
+    </div>
+
+    <div class="button-container" style="margin-top: 20px;" *ngIf="narudzbine[cnt*3+1].status=='Odbijena'">
+        <i class="fa fa-times" aria-hidden="true" style="color:#CE0000; font-size: 50px;"></i>
+    </div>
+</div>
+<div></div>
+</div>
+</div>
+
+
+
+<div class="col-sm-4" style="text-align: center;" *ngIf="narudzbine[cnt*3+2]" >
+    <div  class="card" >
+        <div style="overflow-y: auto; max-height: 300px;" class="itemsCont">
+<div class="proizvodItem" *ngFor="let item of narudzbine[cnt*3+2].items" >
+<div class="container" >
+<div class="row">
+    <div class="col" style="margin: auto;"><img src="{{getPic(item.id)}}" alt="" style="width: 75px; height: 75px; object-fit: contain;"></div>
+    <div class="col" style="margin: auto;"><b>{{item.quantity}} x {{getNaslovFormat(item.name)}}</b></div>
+    <div class="col" style="margin: auto;"><b>{{item.fullPrice}} din</b></div>
+</div>
+</div>
+</div>
+        </div>
+<div class="header-sticky">
+    <h4 style="margin-bottom: 30px;"><u><b>UKUPNO: {{getPrice(narudzbine[cnt*3+2].idOrder)}} din</b></u></h4>
+    <h6 style="margin-bottom: 30px;"><b>STATUS: {{narudzbine[cnt*3+2].status}}</b></h6>
+    <div class="button-container" style="margin-top: 20px;" *ngIf="narudzbine[cnt*3+2].status=='Čeka na odobrenje'">
+        <button class="odobriBtn" (click)="approveOrder(narudzbine[cnt*3+2].idOrder)">Odobri</button>
+        <button class="odbijBtn" (click)="declineOrder(narudzbine[cnt*3+2].idOrder)">Odbij</button>
+    </div>
+
+    <div class="button-container" style="margin-top: 20px;" *ngIf="narudzbine[cnt*3+2].status=='Odobrena'">
+        <i class="fa fa-check" aria-hidden="true" style="color:#349A08; font-size: 50px;"></i>
+    </div>
+
+    <div class="button-container" style="margin-top: 20px;" *ngIf="narudzbine[cnt*3+2].status=='Odbijena'">
+        <i class="fa fa-times" aria-hidden="true" style="color:#CE0000; font-size: 50px;"></i>
+    </div>
+</div>
+<div></div>
+</div>
+</div>
+
+
+</div>
+
+<p class="paginator" *ngIf="narudzbine.length>3">{{cnt*3+1}} - {{cnt*3+3>narudzbine.length?narudzbine.length:cnt*3+3}} of {{this.narudzbine.length}}
+    <a href="javascript:void(0)" (click)="decrementCounter()" [ngClass]="cnt*3==0?'disabledClass':'enabledClass'">&lt;</a>
+    <a  href="javascript:void(0)" (click)="incrementCounter()" [ngClass]="(((cnt+1) * 3 >= narudzbine.length ) || (narudzbine.length <= 3)) ? 'disabledClass' : 'enabledClass'">&gt;</a></p> 
+</div></div>

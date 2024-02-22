@@ -11,20 +11,27 @@
                 <li class="nav-item active">
                     <span class="nav-link" style="font-size: 48px; color: #046978;">Šećerlema</span>
                 </li>
-                <li class="nav-item">
+                <li class="nav-item" *ngIf="type=='customer'">
                   <a class="nav-link" href="promocije" style="margin-left: 230px;">PROMOCIJE</a>
                 </li>
-                <li class="nav-item">
+                <li class="nav-item" *ngIf="type=='customer'">
                     <u><a class="nav-link" href="poslastice">POSLASTICE</a></u>
                   </li>
-                  <li class="nav-item">
+                  <li class="nav-item" *ngIf="type=='customer'">
                     <a class="nav-link" href="o-nama">O NAMA</a>
                   </li>
-                  <li class="nav-item">
+                  <li class="nav-item" *ngIf="type=='customer'">
                     <a class="nav-link" href="moji-podaci">MOJI PODACI</a>
                   </li>
-                  <li class="nav-item">
+                  <li class="nav-item" *ngIf="type=='customer'">
                     <a class="nav-link" href="moja-korpa">MOJA KORPA</a>
+                  </li>
+
+                  <li class="nav-item" *ngIf="type=='customer'">
+                    <a class="nav-link" href="obavestenja" id="bell"> <i class="far fa-bell"></i></a>
+                  </li>
+                  <li class="nav-item" *ngIf="type=='customer'">
+                    <a class="nav-link" href="#" id="signout">  <i class="fas fa-sign-out-alt"></i></a>  
                   </li>
               </ul>
         </div>
@@ -32,5 +39,50 @@
     <br>
     <br>
     <h1 class="naslov">POSLASTICE</h1>
-<div id="blue"></div>
+<div id="blue">
+
+<div style="text-align: center;">
+  <br>
+  <h5 style="color: white; margin-right: 146px;">Tip poslastice</h5>
+<select name="poslastice" id="poslastice" style=" width: 280px; color: #046978; height: 45px;" [(ngModel)]="tipPoslastice" (ngModelChange)="changeSweets($event)">
+  <option value="torte"  style="color: #046978;">Torte</option>
+  <option value="kolaci" style="color: #046978;">Kolači</option>
+
+</select>
+
+<table style="margin: auto;">
+  <tr>
+    <td>
+      <a href="proizvod/{{listaPrikazProizvoda[cnt*3].id}}" class="sweet" *ngIf="listaPrikazProizvoda[cnt*3]">
+     <img src="{{listaPrikazProizvoda[cnt*3].src}}" class="imgPoslastice" *ngIf="listaPrikazProizvoda[cnt*3]">
+    </a>
+    </td>
+    <td>
+      <a href="proizvod/{{listaPrikazProizvoda[cnt*3+1].id}}" class="sweet" *ngIf="listaPrikazProizvoda[cnt*3+1]">
+      <img src="{{listaPrikazProizvoda[cnt*3+1].src}}"class="imgPoslastice" *ngIf="listaPrikazProizvoda[cnt*3+1]">
+    </a>
+    </td>
+    <td>
+      <a href="proizvod/{{listaPrikazProizvoda[cnt*3+2].id}}" class="sweet" *ngIf="listaPrikazProizvoda[cnt*3+2]">
+      <img src="{{listaPrikazProizvoda[cnt*3+2].src}}"class="imgPoslastice" id="thirdImg" *ngIf="listaPrikazProizvoda[cnt*3+2]">
+    </a>
+    </td>
+  </tr>
+  <tr>
+    <td>
+<h3 class="naslovPosl" *ngIf="listaPrikazProizvoda[cnt*3]">{{listaPrikazProizvoda[cnt*3].naslov}} </h3>
+    </td>
+<td>
+  <h3 class="naslovPosl" *ngIf="listaPrikazProizvoda[cnt*3+1]"> {{listaPrikazProizvoda[cnt*3+1].naslov}}</h3>
+</td>
+<td>
+  <h3 class="naslovPosl" id="naslovThird" *ngIf="listaPrikazProizvoda[cnt*3+2]">{{listaPrikazProizvoda[cnt*3+2].naslov}}</h3>
+</td>
+</tr>
+</table>
+<p class="paginator" *ngIf="listaPrikazProizvoda.length>3">{{cnt*3+1}} - {{cnt*3+3>listaPrikazProizvoda.length?listaPrikazProizvoda.length:cnt*3+3}} of {{this.listaPrikazProizvoda.length}}
+  <a href="javascript:void(0)" (click)="decrementCounter()" [ngClass]="cnt*3==0?'disabledClass':'enabledClass'">&lt;</a>
+  <a  href="javascript:void(0)" (click)="incrementCounter()" [ngClass]="(((cnt+1) * 3 >= listaPrikazProizvoda.length ) || (listaPrikazProizvoda.length <= 3)) ? 'disabledClass' : 'enabledClass'">&gt;</a></p> 
+</div>
+</div>
 </div>

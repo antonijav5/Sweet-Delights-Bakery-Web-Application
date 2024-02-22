@@ -11,20 +11,26 @@
                 <li class="nav-item active">
                     <span class="nav-link" style="font-size: 48px; color: #046978;">Šećerlema</span>
                 </li>
-                <li class="nav-item">
+                <li class="nav-item" *ngIf="type=='customer'">
                   <a class="nav-link" href="promocije" style="margin-left: 230px;">PROMOCIJE</a>
                 </li>
-                <li class="nav-item">
+                <li class="nav-item" *ngIf="type=='customer'">
                     <a class="nav-link" href="poslastice">POSLASTICE</a>
                   </li>
-                  <li class="nav-item">
+                  <li class="nav-item" *ngIf="type=='customer'">
                     <a class="nav-link" href="o-nama">O NAMA</a>
                   </li>
-                  <li class="nav-item">
+                  <li class="nav-item" *ngIf="type=='customer'">
                     <a class="nav-link" href="moji-podaci">MOJI PODACI</a>
                   </li>
-                  <li class="nav-item">
+                  <li class="nav-item" *ngIf="type=='customer'">
                 <u><a class="nav-link" href="moja-korpa">MOJA KORPA</a></u>
+                  </li>
+                  <li class="nav-item" *ngIf="type=='customer'">
+                    <a class="nav-link" href="obavestenja" id="bell"> <i class="far fa-bell"></i></a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link" href="#" id="signout">  <i class="fas fa-sign-out-alt"></i></a>  
                   </li>
               </ul>
         </div>
@@ -32,5 +38,70 @@
     <br>
     <br>
     <h1 class="naslov">MOJA KORPA</h1>
-<div id="blue"></div>
+<div id="blue" style="text-align: center;" class="container-fluid" >
+  <br>
+  <button style="float: inline-end; font-family: inherit; color: rgba(2, 56, 64, 1);" (click)="deleteCart()" *ngIf="myOrder.length>0">Izbrišite sadržaj korpe <i class="fas fa-trash-alt"></i></button>
+  <br>
+<h5 style="color: white; " *ngIf="myOrder.length>0">Vaša narudžbina sadrži:</h5>
+<table style="margin: 0 auto;   border-collapse: separate;
+border-spacing: 0 15px;" *ngIf="myOrder.length>0">
+  <tbody>
+    <tr *ngFor="let item of myOrder">
+      <td >
+        <table> 
+          <tr>
+            <td>
+              <button type="button" class="btn btn-primary" id="plus" (click)="increaseQuantity(item.id)"><b>+</b></button>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <button type="button" class="btn btn-primary" id="minus" (click)="decreaseQuantity(item.id)" [disabled]="item.quantity==1"><b>-</b></button>
+            </td>
+          </tr>
+        </table>
+      </td>
+      <td class="item">
+        <table style="color:#046978;">
+          <tr>
+            <td style="width: 100px;">
+              <img src="{{getPic(item.id)}}" alt="" style="width: 75px; height: 75px; object-fit: contain;">
+            </td>
+            <td style="width: 200px;"><b>{{item.quantity}} x {{item.name}}</b></td>
+            <td style="width: 100px;"><b>{{item.fullPrice}} din</b></td>
+          </tr>
+        </table>
+      </td>
+    </tr>
+  </tbody>
+</table>
+<div style="text-align: center;" *ngIf="myOrder.length>0">
+  <div style="display: inline-block; margin-left: -40px; color: #046978;;">
+<br><br>
+    <table>
+      <tr>
+        <td>
+          <img src="../assets/img/gold.png" style="width: 75px; height: 75px; margin-right: 15px;">
+        </td>
+        <td class="item">
+     <b>Ukupno:</b> <span style="font-weight: bolder; font-size: 22px;">&nbsp;{{totalPrice}} din</span>
+        </td>
+      </tr>
+    </table>
+   
+  </div>
+
+</div>
+<button type="button" class="btn btn-primary" id="potvrdi" (click)="submit(); openDialog()" *ngIf="myOrder.length>0">Potvrdite narudžbinu</button>
+<div id="customDialog" class="dialog"  style="background-color: #22712E; color: white; width: 400px;" >
+  <div class="dialog-content">
+    <button (click)="closeDialog()" style="float: inline-end; border: none; color: white; background-color: #22712E;">X</button>
+    <br>
+    <p style="color: white !important;">Narudžbina uspešno kreirana.</p>
+    
+  </div>
+</div>
+
+<div *ngIf="myOrder.length==0" style="font-size: 40px; color: white !important;">Trenutno nemate sadržaja u korpi.</div>
+</div>
 </div>
